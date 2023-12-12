@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 // Gallery.js
 import { useContext } from 'react'
 import { DataContext } from '../context/DataContext'
+=======
+>>>>>>> part2
 import GalleryItem from './GalleryItem'
 
 function Gallery(){
