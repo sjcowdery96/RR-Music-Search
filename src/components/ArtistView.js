@@ -47,7 +47,6 @@ function ArtistView() {
     return (
         <div>
             <Suspense fallback={<Loading></Loading>}>
-                {artistData.length > 0 ? <h2>{artistData[0].artistName}</h2> : <h2>Loading...</h2>}
                 {navButtons()}
                 {renderAlbums}
             </Suspense>
