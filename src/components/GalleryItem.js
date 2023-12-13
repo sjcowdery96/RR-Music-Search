@@ -1,16 +1,16 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-
+//using our combination of 
 function GalleryItem(props) {
     let [view, setView] = useState(false)
-
+    //very powerful to save CSS styling as a variable to reference later
     const simpleStyle = {
         'width': '25vw',
         'height': '20vh',
         'border': '1px solid black',
         'margin': '2px'
     }
-
+    //since we have our artist data fed in through props, we can style it
     const detailStyle = {
         'width': '80vw',
         'height': '20vh',
@@ -21,7 +21,7 @@ function GalleryItem(props) {
         'backgroundSize': 'cover',
         'color': 'yellow'
     }
-
+    //view before we click in
     const simpleView = () => {
         return (
             <div style={simpleStyle}>
@@ -30,7 +30,8 @@ function GalleryItem(props) {
             </div>
         )
     }
-
+    //view after we click in
+    //uses Link element to jump to correct data
     const detailView = () => {
         return (
             <div style={detailStyle}>
@@ -50,7 +51,7 @@ function GalleryItem(props) {
             </div>
         )
     }
-
+    //final render logic for which view to render
     return (
         <div onClick={() => setView(!view)} style={{ 'display': 'inline-block' }}>
 
