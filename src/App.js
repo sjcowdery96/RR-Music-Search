@@ -1,9 +1,10 @@
-import { useEffect, useState, Fragment } from 'react'
+import { useEffect, useState, Fragment, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Gallery from './components/Gallery'
 import SearchBar from './components/SearchBar'
 import AlbumView from './components/AlbumView'
 import ArtistView from './components/ArtistView'
+import Loading from './components/Loading'
 
 function App() {
 	//creates the relevant state variables
@@ -39,16 +40,18 @@ function App() {
 		<div>
 			{message}
 			<Router>
-				<Routes>
-					<Route path="/" element={
-						<Fragment>
-							<SearchBar handleSearch={handleSearch} />
-							<Gallery data={data} />
-						</Fragment>
-					} />
-					<Route path="/album/:id" element={<AlbumView />} />
-					<Route path="/artist/:id" element={<ArtistView />} />
-				</Routes>
+				<Suspense fallback={<Loading></Loading>}>
+					<Routes>
+						<Route path="/" element={
+							<Fragment>
+								<SearchBar handleSearch={handleSearch} />
+								<Gallery data={data} />
+							</Fragment>
+						} />
+						<Route path="/album/:id" element={<AlbumView />} />
+						<Route path="/artist/:id" element={<ArtistView />} />
+					</Routes>
+				</Suspense>
 			</Router>
 		</div>
 	);
